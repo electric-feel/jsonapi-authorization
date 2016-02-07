@@ -17,8 +17,10 @@ module JSONAPI
 
         case relationship
         when JSONAPI::Relationship::ToOne
+          STDERR.puts "------------ Called ToOne relation #records_for"
           record_or_records
         when JSONAPI::Relationship::ToMany
+          STDERR.puts "------------ Called ToMany relation #records_for"
           ::Pundit.policy_scope!(context[:user], record_or_records)
         else
           raise "Unknown relationship type #{relationship.inspect}"
