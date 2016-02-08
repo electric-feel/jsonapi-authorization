@@ -13,4 +13,13 @@ class ArticleResource < JSONAPI::Resource
   # Setting this attribute is an easy way to test that authorizations work even
   # when the model has validation errors
   attributes :blank_value
+  primary_key :external_id
+
+  def self.verify_key(key, _context = nil)
+    key && String(key)
+  end
+
+  def id=(external_id)
+    _model.external_id = external_id
+  end
 end

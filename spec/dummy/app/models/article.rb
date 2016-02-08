@@ -8,6 +8,10 @@ class Article < ActiveRecord::Base
   has_one :non_existing_article, -> { none }, class_name: 'Article', foreign_key: :id
   has_many :empty_articles, -> { none }, class_name: 'Article', foreign_key: :id
 
+  def to_param
+    external_id
+  end
+
   # Setting blank_value attribute is an easy way to test that authorizations
   # work even when the model has validation errors
   validate :blank_value_must_be_blank
