@@ -1,5 +1,6 @@
 class Article < ActiveRecord::Base
   has_many :comments
+  has_many :tags, as: :taggable
   belongs_to :author, class_name: 'User'
 
   # Hack for easy include directive checks

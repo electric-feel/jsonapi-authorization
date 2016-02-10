@@ -13,5 +13,9 @@ class CreateModels < ActiveRecord::Migration
       t.references :author
       t.string :blank_value
     end
+
+    create_table :tags do |t|
+      t.references :taggable, polymorphic: true
+    end
   end
 end
